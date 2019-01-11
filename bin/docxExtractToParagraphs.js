@@ -218,6 +218,7 @@ var docExtractToParagraphs = {
         var elasticAllDocuments = [];
 
         var docId = 1
+        var paragraphId = 1
         xmlPaths.forEach(function (xmlPath) {
 
 
@@ -256,7 +257,7 @@ var docExtractToParagraphs = {
                 var chapterId = 1
 
                 jsonContent.forEach(function (chapter, index) {
-                    var paragraphId = 1
+
                     if (!chapter.key)
                         chapter.key = "";
                     chapter.title = removeHtmlTags(chapter.title);
@@ -468,9 +469,9 @@ if (false) {
     docExtractToParagraphs.allParagraphArray2X(dir, "csv", true);
 }
 
-if (false) {
-    var dir = "D:\\Total\\docs\\GM MEC Word\\documents"
-    var dir="D:\\Total\\docs\\test"
+if (true) {
+    var dir = "D:\\Total\\docs\\GM_MEC_Word"
+  //  var dir="D:\\Total\\docs\\test"
     docExtractToParagraphs.extractDirDocx(dir,function(err, result){
         var x=result;
     });
@@ -565,5 +566,5 @@ if (args.length > 2) {
         }
     ])
 } else {
-    console.log("Usage :  extract  sourceDir targetDir");
+    console.log("Usage :   sourceDir targetDir");
 }

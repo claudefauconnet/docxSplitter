@@ -639,6 +639,37 @@ var docxExtactor = {
     },
 
 
+    /**
+     *
+     * @param tblElt
+     * @returns {{rows: Array}}
+     */
+
+    extractTable: function (tblElt) {
+
+
+        var table = {rows: []};
+
+
+        var columns = tblElt.getElementsByTagName("w:tr");
+        for (var k = 0; k < columns.length; k++) {
+            var row = [];
+            table.rows.push(row)
+            var cells = columns[k].getElementsByTagName("w:tc");
+
+            for (var y = 0; y < cells.length; y++) {
+                var cell = extractRunText(cells[y]);
+                row.push(cell);
+
+            }
+
+
+        }
+        return table;
+        // console.log(JSON.stringify(json,null,2))
+    },
+
+
 }
 
 module.exports = docxExtactor;
