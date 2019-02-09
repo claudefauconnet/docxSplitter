@@ -370,9 +370,10 @@ var docxParagraphAggregator = {
 
         jsonParagraphs.forEach(function (paragraph, indexParagraph) {
 
-          //  console.log("" + indexParagraph + " / " + paragraph.title + " / " + paragraph.text + " / " + paragraph.style + " / " + paragraph.version)
+            // console.log("" + indexParagraph + " / " + paragraph.title + " / " + paragraph.text + " / " + paragraph.style + " / " + paragraph.version)
 
-
+            /*if(indexParagraph==90)
+                var xx=1*/
 
             /* if (paragraph.text && paragraph.text.indexOf("Rotor and test bench status before HSB:") > -1)
                    var x = 2*/
@@ -382,7 +383,7 @@ var docxParagraphAggregator = {
                     currentGroupedParagraph.images.push(image);
                 })
                 // on ne change pas de currentGroupedParagraph si paragraph ne contient qu'une image
-                if  (paragraph.title == ""  && paragraph.text == "")
+                if (paragraph.title == "" && paragraph.text == "")
                     return;
             }
 

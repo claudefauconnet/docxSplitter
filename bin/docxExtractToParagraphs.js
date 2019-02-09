@@ -28,7 +28,6 @@
 var fs = require('fs');
 
 
-
 var path = require('path');
 var dom = require('xmldom').DOMParser
 var async = require('async');
@@ -170,8 +169,8 @@ var docExtractToParagraphs = {
 
      },*/
 
-    extractDirDocx: function (docxDir,callback) {
-        var dir=docxDir+"/documents"
+    extractDirDocx: function (docxDir, callback) {
+        var dir = docxDir + "/documents"
         var resultDirPath = docxDir + "/extractions";
         if (!fs.existsSync(resultDirPath)) {
             fs.mkdir(resultDirPath);
@@ -348,20 +347,20 @@ var docExtractToParagraphs = {
         fs.writeFileSync(resultDirPath + "/elasticAllParagraphs.json", JSON.stringify(elasticAllParagraphs, null, 2))
         fs.writeFileSync(resultDirPath + "/elasticAllDocuments.json", JSON.stringify(elasticAllDocuments, null, 2));
 
-        callback(null,"done");
+        callback(null, "done");
         //    fs.writeFileSync(dir + "/elasticTree.json", JSON.stringify(elasticTree, null, 2))
 
 
     },
-    convertImagesToPng: function (sourceDirPath,targetDirPath,callback) {
+    convertImagesToPng: function (sourceDirPath, targetDirPath, callback) {
 
         sourceDirPath = path.resolve(sourceDirPath);
         targetDirPath = path.resolve(targetDirPath);
-        var changeDrive=""
-        if( path.sep!="/")//windows
-        var changeDrive= " & "+sourceDirPath.substring (0,2);
+        var changeDrive = ""
+        if (path.sep != "/")//windows
+            var changeDrive = " & " + sourceDirPath.substring(0, 2);
         console.log(changeDrive)
-       var  cmd = "cd " + sourceDirPath +changeDrive+" & "+ config.imageMagick.cmdPath+" mogrify -path "+targetDirPath+" "+config.imageMagick.options+" -format "+config.imageMagick.format+" +profile \"*\"  *.*" ;
+        var cmd = "cd " + sourceDirPath + changeDrive + " & " + config.imageMagick.cmdPath + " mogrify -path " + targetDirPath + " " + config.imageMagick.options + " -format " + config.imageMagick.format + " +profile \"*\"  *.*";
         console.log(cmd)
         try {
             exec(cmd, function (err, stdout, stderr) {
@@ -371,7 +370,7 @@ var docExtractToParagraphs = {
                     return callback(stderr);
                 }
                 // console.log("DONE " + cmd);
-                return callback(null,"done");
+                return callback(null, "done");
             })
         }
         catch (e) {
@@ -379,28 +378,27 @@ var docExtractToParagraphs = {
             return callback(e);
         }
     },
-    convertAllImagesToPng: function (sourceDir, targetDir,callback) {
+    convertAllImagesToPng: function (sourceDir, targetDir, callback) {
 
         sourceDir = path.resolve(sourceDir + "/media");
         targetDir = path.resolve(targetDir + "/media");
-        if(!fs.existsSync(targetDir))
+        if (!fs.existsSync(targetDir))
             fs.mkdir(targetDir)
         var childDirs = fs.readdirSync(sourceDir);
-        async.eachSeries(childDirs,function(childDir,callbackEach){
+        async.eachSeries(childDirs, function (childDir, callbackEach) {
             var childSourceDirPath = path.resolve(sourceDir + "/" + childDir);
             var childTargetDirPath = path.resolve(targetDir + "/" + childDir);
-            console.log("-----s----"+childSourceDirPath)
-            console.log("---------"+childTargetDirPath)
-            if(!fs.existsSync(childTargetDirPath))
+            console.log("-----s----" + childSourceDirPath)
+            console.log("---------" + childTargetDirPath)
+            if (!fs.existsSync(childTargetDirPath))
                 fs.mkdir(childTargetDirPath)
-            docExtractToParagraphs.convertImagesToPng(childSourceDirPath,childTargetDirPath,function(err,result){
+            docExtractToParagraphs.convertImagesToPng(childSourceDirPath, childTargetDirPath, function (err, result) {
                 return callbackEach();
             })
-        }, function(err){
+        }, function (err) {
             return callback();
         })
     },
-
 
 
     extractXmlFilesFromDocXDir: function (sourceDir, targetDir, callback) {
@@ -473,7 +471,7 @@ var docExtractToParagraphs = {
                 }
             })
             console.log("DONE");
-            return callback(null,"done")
+            return callback(null, "done")
 
         }
         catch (e) {
@@ -482,8 +480,6 @@ var docExtractToParagraphs = {
         }
 
     },
-
-
 
 
 }
@@ -498,15 +494,15 @@ if (false) {
 
 if (true) {
     var dir = "D:\\Total\\docs\\GM_MEC_Word"
-  //  var dir="D:\\Total\\docs\\test"
-    docExtractToParagraphs.extractDirDocx(dir,function(err, result){
-        var x=result;
-    });
+   // var dir = "D:\\Total\\docs\\test"
+  //  docExtractToParagraphs.extractXmlFilesFromDocXDir(dir, dir, function (err, result) {
+    //    docExtractToParagraphs.convertImagesToPng(dir + "documents\\media", dir + "documents\\media", function (err, result) {
+            docExtractToParagraphs.extractDirDocx(dir, function (err, result) {
+                var x = result;
+            });
+     //   });
+   // });
 }
-
-
-
-
 
 
 const args = process.argv;
@@ -535,7 +531,7 @@ if (args.length > 2) {
     async.series([
         // extract necessary xmls from docx documents in dir
         function (callback) {
-          //  return callback();
+            //  return callback();
             console.log("Starting : extraction of xml files from docx ")
             docExtractToParagraphs.extractXmlFilesFromDocXDir(sourceDirPath, targetDirPath, function (err, result) {
                 if (err)
@@ -543,8 +539,7 @@ if (args.length > 2) {
                 console.log("Done : extraction of xml files from docx ")
 
 
-
-                setTimeout(function(){
+                setTimeout(function () {
                     // extract paragraphs
 
 
@@ -555,11 +550,11 @@ if (args.length > 2) {
                         console.log("Done : paragraphs extractions")
 
                         console.log("Starting : converting images to png ");
-                        var targetMediaDir=path.resolve(targetDirPath + "/extractions");
+                        var targetMediaDir = path.resolve(targetDirPath + "/extractions");
 
-                        if(!fs.existsSync(targetMediaDir))
+                        if (!fs.existsSync(targetMediaDir))
                             fs.mkdirSync(targetMediaDir)
-                        docExtractToParagraphs.convertAllImagesToPng(targetDirPath+"/documents/",targetMediaDir, function (err, result) {
+                        docExtractToParagraphs.convertAllImagesToPng(targetDirPath + "/documents/", targetMediaDir, function (err, result) {
                             if (err)
                                 return callback(err);
                             console.log("Done : converting images to png ")
@@ -567,29 +562,24 @@ if (args.length > 2) {
                         })
 
 
-
-
-
                     })
 
 
-
-
-                },1000)
+                }, 1000)
 
 
             })
         }
-       ,
+        ,
 
         // concert images to png
         function (callback) {
-       // return callback();
+            // return callback();
 
         },
 
         function (callback) {
-            console.log("task successfull : extractions are located in "+targetDirPath)
+            console.log("task successfull : extractions are located in " + targetDirPath)
         }
     ])
 } else {

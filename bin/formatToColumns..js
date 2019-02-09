@@ -25,7 +25,7 @@
  * SOFTWARE.
  *
  ******************************************************************************/
-var config=require("./config..js");
+var config = require("./config..js");
 
 
 var formatToColumns = {
@@ -62,6 +62,9 @@ var formatToColumns = {
                         html += "<td>";
                         html += cell.text;
                         html += "</td>";
+
+                        if (cell.images)
+                            html += extractImages(cell.images, fileName)
                     })
                     html += "<tr>";
                 })
@@ -71,13 +74,13 @@ var formatToColumns = {
         }
 
         function extractImages(images, fileName) {
-         var line=""
-            images.forEach(function(image,index){
-                var url = image.replace("media/", config.imagesServerUrl + "" + fileName +"/");
-                  if(index>0)
-                      line+=" | ";
-                  line += url;
-          })
+            var line = ""
+            images.forEach(function (image, index) {
+                var url = image.replace("media/", config.imagesServerUrl + "" + fileName + "/");
+                if (index > 0)
+                    line += " | ";
+                line += url;
+            })
             return line;
         }
 
@@ -94,10 +97,10 @@ var formatToColumns = {
 
         function formatBullets(paragraph) {
 
-            if( paragraph.isSplitBullet){
-                if(paragraph.text=="")
+            if (paragraph.isSplitBullet) {
+                if (paragraph.text == "")
                     return "";
-                return "<ul-li>"+paragraph.text+"</ul-li>"
+                return "<ul-li>" + paragraph.text + "</ul-li>"
             }
             var bullets = paragraph.bullets;
             if (!bullets || bullets.length == 0) {
@@ -105,35 +108,26 @@ var formatToColumns = {
             }
 
 
-
-
-
-
-
-
             var bulletsText = "";
             var start = 0;
-           var bulletPrefix="";//<"+paragraph.style+">";
-            bulletsText+=bulletPrefix;
+            var bulletPrefix = "";//<"+paragraph.style+">";
+            bulletsText += bulletPrefix;
             bullets.forEach(function (bullet, index) {
 
                 if (index == 0)
                     start = bullet.offset;
-                bulletsText += "<"+bullet.type+"-li>" + bullet.text +"</"+bullet.type+"-li>"
+                bulletsText += "<" + bullet.type + "-li>" + bullet.text + "</" + bullet.type + "-li>"
             })
 
             return paragraph.text.substring(0, start) + bulletsText + paragraph.text.substring(start + 1)
 
         }
 
-/* *************************end internal functions****************************/
-
-
-
+        /* *************************end internal functions****************************/
 
 
         var line = ""
-
+        var cellImages = "";
 
 
         //tables
@@ -141,73 +135,85 @@ var formatToColumns = {
         if (sourceJson.paragraph.tables) {
             sourceJson.paragraph.tables.forEach(function (table) {
                 if (table.type == "table") {
-                    cellTables+= getTableJson(table);
+                    if (table.rows) {
+
+                        table.rows.forEach(function (row, indexRow) {
+                            row.forEach(function (cell, indexCell) {
+                                if(cell.images) {
+                                    if (cellImages != "" )
+                                        cellImages += " | "
+                                    cellImages += extractImages(cell.images, sourceJson.fileName);
+                                }
+                            })
+
+                        })
+                    }
+
+
                 }
 
-                // on cree un tableau avec chaque ligne
+                // on cree un tableau pour chaque ligne
                 else if (table.type == "splitTable") {
-                    var json={rows:[]};
+                    var json = {rows: []};
                     table.values.forEach(function (obj) {
-                      var row=[]
+                        var row = []
                         for (var key in obj) {
-                           row.push(key);
+                            row.push(key);
                             row.push(obj[key]);
 
                         }
                         json.rows.push(row)
 
                     })
-                    cellTables+= getTableJson(table);
+                    cellTables += getTableJson(table);
                 }
             })
         }
 
-if(sourceJson.chapter.title=="Definitions of terms")
-    var xx=2
 
-        if(  sourceJson.paragraph.text.indexOf("considered according API are")>-1)
-            var ww=1
+        if (sourceJson.paragraph.text.indexOf("considered according API are") > -1)
+            var ww = 1
 
 
-        sourceJson.paragraph.text== sourceJson.paragraph.text.replace(/\n/gm,"<br>")
-     //   sourceJson.paragraph.text= removeHtmlTags( sourceJson.paragraph.text);
-           //images
-         var cellImages = extractImages(sourceJson.paragraph.images, sourceJson.fileName);
-         ///  sourceJson.paragraph.text =sourceJson.paragraph.text .replace(/{{"image":.*}}/gm,"");*/
+        sourceJson.paragraph.text == sourceJson.paragraph.text.replace(/\n/gm, "<br>")
+        //   sourceJson.paragraph.text= removeHtmlTags( sourceJson.paragraph.text);
+        //images
+
+        var cellImages2 = extractImages(sourceJson.paragraph.images, sourceJson.fileName);
+        if (cellImages != "" && cellImages2 != "")
+            cellImages += " | "
+        cellImages += cellImages2
+
+        ///  sourceJson.paragraph.text =sourceJson.paragraph.text .replace(/{{"image":.*}}/gm,"");*/
 
         //bullets
 
         sourceJson.paragraph.text = formatBullets(sourceJson.paragraph);
 
-     //   sourceJson.paragraph.text = sourceJson.paragraph.text.replace(/<br>/gm, "\n");
-
-
+        //   sourceJson.paragraph.text = sourceJson.paragraph.text.replace(/<br>/gm, "\n");
 
 
         //infos
-        sourceJson.docTitle= removeHtmlTags(sourceJson.chapter.title);
-        var cellDocTitle =sourceJson.fileName + "  " + sourceJson.docTitle
+        sourceJson.docTitle = removeHtmlTags(sourceJson.chapter.title);
+        var cellDocTitle = sourceJson.fileName + "  " + sourceJson.docTitle
 
 
         //titre
-        line += sourceJson.chapter.title+"\t";
+        line += sourceJson.chapter.title + "\t";
 
-       line+=sourceJson.paragraph.text+"\t";
-
-
-       line+=cellTables+"\t";
-
-        line+=cellDocTitle+"\t";
-
-        line+=cellImages+"\t";
+        line += sourceJson.paragraph.text + "\t";
 
 
+        line += cellTables + "\t";
+
+        line += cellDocTitle + "\t";
+
+        line += cellImages + "\t";
 
 
-    
-        line=line.replace(/\n/gm,"<br>")
-        line=line.replace(/\r/gm,"")
-        
+        line = line.replace(/\n/gm, "<br>")
+        line = line.replace(/\r/gm, "")
+
         return line;
 
 
