@@ -247,7 +247,7 @@ var docExtractToParagraphs = {
         var paragraphId = 1
         xmlPaths.forEach(function (xmlPath) {
 
-
+//console.log(xmlPath);
             if (xmlPath.indexOf(".xml") < 0)
                 return;
             if (xmlPath.indexOf("_header.xml") > -1)

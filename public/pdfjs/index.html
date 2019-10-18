@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>PDF Viewer PDF.js</title>
+    <meta charset="UTF-8"/>
+    <link rel="stylesheet" href="./styles.css"/>
+</head>
+
+<body>
+<div id="app">
+    <div role="toolbar" id="toolbar">
+        <div id="pager">
+            <button data-pager="prev">prev</button>
+            <button data-pager="next">next</button>
+            <select onchange="parseCFpdf.readPdf($(this).val())">
+                <option></option>
+                <option>Barge.pdf</option>
+                <option>Butane.pdf</option>
+                <option>Condensate.pdf</option>
+                <option>Corrosion.pdf</option>
+                <option>Gratings.pdf</option>
+                <option>mudBlender.pdf</option>
+
+
+            </select>
+
+        </div>
+
+        <div id="page-mode">
+            <label>Page Mode <input type="number" value="4" min="1"/></label>
+        </div>
+    </div>
+  <div>
+    top entity keywords <input id="keyWordsInput" size="100"></input> <button onclick="parseCFpdf.showTexts()">show entities</button>
+  </div>
+    <div id="cfDiv" style="height: 1000px;overflow: auto"></div>
+    <div id="viewport-container">
+        <div role="main" id="viewport"></div>
+    </div>
+</div>
+<!--   <script src="https://unpkg.com/pdfjs-dist@2.0.489/build/pdf.min.js"></script>-->
+<script src="pdf.js"></script>
+<script src="src/index.js"></script>
+<script src="../js/jquery/jquery.min.js"></script>
+
+<script src="parseCFpdf.js"></script>
+<script>
+    //  initPDFViewer("assets/example.pdf");
+  //  initPDFViewer("assets/Butane.pdf");//
+</script>
+</body>
+</html>

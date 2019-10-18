@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+
+    <script src="https://d3js.org/d3.v5.min.js"></script>
+    <script src="pdf.js"></script>
+
+
+</head>
+
+<body>
+<div id="graphDiv"></div>
+
+
+</body>
+
+<script>
+function getRandomColor(){
+
+        var color =  "#" + (Math.random() * 0xFFFFFF << 0).toString(16);
+        return color;
+
+}
+
+        var bodySelection = d3.select("body");
+
+        var svgSelection = bodySelection.append("svg")
+            .attr("width", 2000)
+            .attr("height", 10000);
+
+        var coef =100;
+
+        svgSelection.selectAll("rect")
+            .data(data.rects)
+            .enter()
+            .append("rect")
+            .attr("x", function (d) {
+                return d.x * coef
+            })
+            .attr("y", function (d) {
+                return d.y * coef
+            })
+            .attr("width", function (d) {
+                return d.w * coef
+            })
+            .attr("height", function (d) {
+                    return d.h*coef
+                }
+            )
+            .attr("fill", "none")
+            .attr("stroke",function(d){
+                return getRandomColor()
+            })
+
+
+        svgSelection.selectAll("text")
+            .data(data.texts)
+            .enter()
+            .append("text")
+            .attr("x", function (d) {
+                return d.x * coef
+            })
+            .attr("y", function (d) {
+                return ((d.y) * coef) + 20
+            })
+            .text(
+                function (d) {
+                    return d.text
+                })
+
+</script>
+</html>
