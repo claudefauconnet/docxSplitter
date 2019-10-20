@@ -4,6 +4,16 @@
     <title>PDF Viewer PDF.js</title>
     <meta charset="UTF-8"/>
     <link rel="stylesheet" href="./styles.css"/>
+  <script src="pdf.js"></script>
+  <script src="src/index.js"></script>
+  <script src="../js/jquery/jquery.min.js"></script>
+  <script src="async.js"></script>
+  <script src="parseCFpdf.js"></script>
+  <script>
+    //  initPDFViewer("assets/example.pdf");
+    //  initPDFViewer("assets/Butane.pdf");//
+  </script>
+
 </head>
 
 <body>
@@ -20,6 +30,10 @@
                 <option>Corrosion.pdf</option>
                 <option>Gratings.pdf</option>
                 <option>mudBlender.pdf</option>
+                <option>Ancrage.pdf</option>
+              <option>Falls.pdf</option>
+
+
 
 
             </select>
@@ -31,7 +45,10 @@
         </div>
     </div>
   <div>
-    top entity keywords <input id="keyWordsInput" size="100"></input> <button onclick="parseCFpdf.showTexts()">show entities</button>
+    top entity keywords <input id="keyWordsInput" size="100"></input>
+    <button onclick="parseCFpdf.showTexts()">show entities</button>
+    <button onclick="parseCFpdf.showEntitiesJson()">showEntitiesJson</button>
+    <textarea id="entitiesJsonDiv" cols=120 rows="20"></textarea>
   </div>
     <div id="cfDiv" style="height: 1000px;overflow: auto"></div>
     <div id="viewport-container">
@@ -39,14 +56,6 @@
     </div>
 </div>
 <!--   <script src="https://unpkg.com/pdfjs-dist@2.0.489/build/pdf.min.js"></script>-->
-<script src="pdf.js"></script>
-<script src="src/index.js"></script>
-<script src="../js/jquery/jquery.min.js"></script>
 
-<script src="parseCFpdf.js"></script>
-<script>
-    //  initPDFViewer("assets/example.pdf");
-  //  initPDFViewer("assets/Butane.pdf");//
-</script>
 </body>
 </html>

@@ -11499,7 +11499,7 @@ function () {
         }
 
         var page = this.pageCache[data.pageIndex];
-
+       // data.operatorList.pageIndex=data.pageIndex
         page._renderPageChunk(data.operatorList, data.intent);
       }, this);
       messageHandler.on('commonobj', function (data) {
@@ -14937,6 +14937,7 @@ var CanvasGraphics = function CanvasGraphicsClosure() {
       }
     },
     endDrawing: function CanvasGraphics_endDrawing() {
+      parseCFpdf.onEndPageDrawing(this);
       if (this.current.activeSMask !== null) {
         this.endSMaskGroup();
       }
@@ -15484,7 +15485,7 @@ var CanvasGraphics = function CanvasGraphicsClosure() {
       var current = this.current;
       var font = current.font;
 
-      parseCFpdf.hackText(glyphs,current)
+      parseCFpdf.hackText(glyphs,current,this.ctx.page)
       return;
 
       if (font.isType3Font) {

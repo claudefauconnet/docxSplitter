@@ -42,7 +42,6 @@
   function initPager() {
     const pager = document.querySelector("#pager");
     pager.addEventListener("click", onPagerButtonsClick);
-    pager.addEventListener("change", onPagerButtonsClick);
     return () => {
       pager.removeEventListener("click", onPagerButtonsClick);
     };
@@ -62,14 +61,12 @@
   }
 
   function render() {
-    parseCFpdf.texts = [];
-    parseCFpdf.fontGroups = {};
     cursorIndex = Math.floor(currentPageIndex / pageMode);
     const startPageIndex = cursorIndex * pageMode;
     const endPageIndex =
-      startPageIndex + pageMode < totalPagesCount
-        ? startPageIndex + pageMode - 1
-        : totalPagesCount - 1;
+        startPageIndex + pageMode < totalPagesCount
+            ? startPageIndex + pageMode - 1
+            : totalPagesCount - 1;
 
     const renderPagesPromises = [];
     for (let i = startPageIndex; i <= endPageIndex; i++) {
@@ -78,7 +75,7 @@
 
     Promise.all(renderPagesPromises).then(pages => {
       const pagesHTML = `<div style="width: ${
-        pageMode > 1 ? "50%" : "100%"
+          pageMode > 1 ? "50%" : "100%"
       }"><canvas></canvas></div>`.repeat(pages.length);
       viewport.innerHTML = pagesHTML;
       pages.forEach(renderPage);
@@ -86,12 +83,10 @@
   }
 
   function renderPage(page) {
-    parseCFpdf.currentPage=page;
-
     let pdfViewport = page.getViewport(1);
 
     const container =
-      viewport.children[page.pageIndex - cursorIndex * pageMode];
+        viewport.children[page.pageIndex - cursorIndex * pageMode];
     pdfViewport = page.getViewport(container.offsetWidth / pdfViewport.width);
     const canvas = container.children[0];
     const context = canvas.getContext("2d");

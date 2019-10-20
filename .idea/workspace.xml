@@ -2,23 +2,19 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="b982a961-4b78-4d07-814d-ffff5f53b6f9" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/bin/pdf/pdf2json..js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdf.html" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/Barge.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/Butane.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/Condensate.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/Corrosion.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/Gratings.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/mudBlender.pdf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/parseCFpdf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/pdf.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/pdf.worker.entry.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/pdfjs/pdf.worker.js" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/public/test.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/pdf/Barge.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/pdf/pdf2Entities..js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/bin/pdf/testPdfjsServer..js" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pdfjs/assets/Falls.pdf" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/public/pdfjs/async.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/bin/docxExtractToParagraphs.js" beforeDir="false" afterPath="$PROJECT_DIR$/bin/docxExtractToParagraphs.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/node_modules/pdfjs-dist/build/pdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/node_modules/pdfjs-dist/build/pdf.js" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/package-lock.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/package.json" beforeDir="false" afterPath="$PROJECT_DIR$/package.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdfjs/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdfjs/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdfjs/parseCFpdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdfjs/parseCFpdf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdfjs/pdf.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdfjs/pdf.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/public/pdfjs/src/index.js" beforeDir="false" afterPath="$PROJECT_DIR$/public/pdfjs/src/index.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -29,9 +25,9 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="JS module" />
         <option value="HTML File" />
         <option value="JavaScript File" />
+        <option value="JS module" />
       </list>
     </option>
   </component>
@@ -44,21 +40,15 @@
     <other-services-enabled>true</other-services-enabled>
     <auto-save>true</auto-save>
   </component>
-  <component name="ProjectConfigurationFiles">
-    <option name="files">
-      <list>
-        <option value="$PROJECT_DIR$/.idea/misc.xml" />
-      </list>
-    </option>
-  </component>
   <component name="ProjectId" id="1QKuCMPyPIo7UI4UUFesQYNtkMa" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="PropertiesComponent">
     <property name="DefaultHtmlFileTemplate" value="HTML File" />
     <property name="HbShouldOpenHtmlAsHb" value="" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="javascript.nodejs.core.library.configured.version" value="10.16.0" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/public/pdfjs/assets" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
     <property name="nodejs_interpreter_path" value="node" />
     <property name="nodejs_package_manager_path" value="npm" />
     <property name="restartRequiresConfirmation" value="false" />
@@ -66,11 +56,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\GitHub\docxSplitter\bin\pdf" />
       <recent name="D:\GitHub\docxSplitter\public\pdfjs\assets" />
       <recent name="D:\GitHub\docxSplitter\public\pdfjs" />
       <recent name="D:\GitHub\docxSplitter\public\js" />
       <recent name="D:\GitHub\docxSplitter\data" />
-      <recent name="D:\GitHub\docxSplitter\bin" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="D:\GitHub\docxSplitter\public\pdfjs\assets" />
@@ -89,14 +79,11 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Node.js.bin\www">
+  <component name="RunManager" selected="Node.js.testPdfjsServer..js">
     <configuration name="pdf.html" type="JavascriptDebugType" temporary="true" nameIsGenerated="true" uri="http://localhost:63342/docxSplitter/public/pdf.html" useBuiltInWebServerPort="true">
       <method v="2" />
     </configuration>
     <configuration name="docxExtractToParagraphs.js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="docxExtractToParagraphs.js" working-dir="$PROJECT_DIR$/bin">
-      <method v="2" />
-    </configuration>
-    <configuration name="docxParagraphAggregator..js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="docxParagraphAggregator..js" working-dir="$PROJECT_DIR$/bin">
       <method v="2" />
     </configuration>
     <configuration name="formatToColumns..js" type="NodeJSConfigurationType" temporary="true" path-to-js-file="formatToColumns..js" working-dir="$PROJECT_DIR$/bin">
@@ -105,23 +92,29 @@
     <configuration name="pdf2json..js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="pdf2json..js" working-dir="$PROJECT_DIR$/bin/pdf">
       <method v="2" />
     </configuration>
+    <configuration name="testPdfjsServer..js" type="NodeJSConfigurationType" temporary="true" nameIsGenerated="true" path-to-js-file="testPdfjsServer..js" working-dir="$PROJECT_DIR$/bin/pdf">
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="JavaScript Debug.pdf.html" />
       <item itemvalue="Node.js.bin\www" />
       <item itemvalue="Node.js.docxExtractToParagraphs.js" />
-      <item itemvalue="Node.js.docxParagraphAggregator..js" />
       <item itemvalue="Node.js.formatToColumns..js" />
       <item itemvalue="Node.js.pdf2json..js" />
+      <item itemvalue="Node.js.testPdfjsServer..js" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Node.js.testPdfjsServer..js" />
         <item itemvalue="Node.js.pdf2json..js" />
         <item itemvalue="JavaScript Debug.pdf.html" />
         <item itemvalue="Node.js.docxExtractToParagraphs.js" />
         <item itemvalue="Node.js.formatToColumns..js" />
-        <item itemvalue="Node.js.docxParagraphAggregator..js" />
       </list>
     </recent_temporary>
+  </component>
+  <component name="StructureViewFactory">
+    <option name="ACTIVE_ACTIONS" value=",ALPHA_COMPARATOR" />
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -144,7 +137,8 @@
       <workItem from="1549892644381" duration="714000" />
       <workItem from="1567531482805" duration="750000" />
       <workItem from="1570805288456" duration="20201000" />
-      <workItem from="1571158481195" duration="44658000" />
+      <workItem from="1571158481195" duration="85834000" />
+      <workItem from="1571557633948" duration="25876000" />
     </task>
     <servers />
   </component>
@@ -168,58 +162,52 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>287</line>
+          <url>mock://webpack://pdfjs-dist/build/pdf.worker/src/core/evaluator.js</url>
+          <line>2745</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="85" />
+          <option name="timeStamp" value="317" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>413</line>
+          <url>mock://webpack://pdfjs-dist/build/pdf.worker/src/core/evaluator.js</url>
+          <line>2744</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="100" />
+          <option name="timeStamp" value="318" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>390</line>
+          <url>mock://webpack://pdfjs-dist/build/pdf/src/display/api.js</url>
+          <line>1172</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="128" />
+          <option name="timeStamp" value="321" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>50</line>
+          <url>mock://webpack://pdfjs-dist/build/pdf/src/display/api.js</url>
+          <line>1171</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="174" />
+          <option name="timeStamp" value="322" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>77</line>
+          <url>mock://webpack://pdfjs-dist/build/pdf/src/display/api.js</url>
+          <line>1177</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="183" />
+          <option name="timeStamp" value="323" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>79</line>
+          <url>mock://webpack://pdfjs-dist/build/pdf/src/display/api.js</url>
+          <line>1176</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="184" />
+          <option name="timeStamp" value="324" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/bin/pdf/pdf2json..js</url>
-          <line>86</line>
+          <url>file://$PROJECT_DIR$/bin/pdf/testPdfjsServer..js</url>
+          <line>392</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="185" />
+          <option name="timeStamp" value="438" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/pdfjs/pdf.js</url>
-          <line>15554</line>
+          <url>file://$PROJECT_DIR$/bin/pdf/testPdfjsServer..js</url>
+          <line>203</line>
           <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="186" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="javascript">
-          <url>file://$PROJECT_DIR$/public/pdfjs/parseCFpdf.js</url>
-          <line>122</line>
-          <properties lambdaOrdinal="-1" />
-          <option name="timeStamp" value="187" />
+          <option name="timeStamp" value="447" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
